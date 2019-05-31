@@ -1,0 +1,49 @@
+<!-- INCLUDE simple_header.html -->
+<!-- IF S_POSTS -->
+<h2>{L_TRANSFER_POSTS_IN_PROGRESS}</h2><br /><img src="{ROOT_PATH}ucoz/ajax-loader.gif"><br /><br />
+<p>{L_POSTS_COPIED}</p>
+	<!-- IF errors -->
+		<!-- BEGIN errors -->
+		<span class="error">{errors.ERROR}</span><br />
+		<!-- END errors -->
+	<!-- ENDIF -->
+<!-- ENDIF -->
+<!-- IF S_FORUMS -->
+<h2>{L_TRANSFER_FORUMS_IN_PROGRESS}</h2><br /><img src="ucoz/ajax-loader.gif"><br /><br />
+<!-- ENDIF -->
+<!-- IF S_ANALYZE_PHPBB -->
+<fieldset>
+<legend style="font-size: 1.2em;font-weight: bold;border-bottom: 1px solid;">{L_ANALYZE_PHPBB}</legend>
+	<dl>
+		<dt>{L_USERS}</dt>
+		<dd>{USERS}</dd>
+		<dt>{L_FORUMS}</dt>
+		<dd>{FORUMS}</dd>
+		<dt>{L_TOPICS}</dt>
+		<dd>{TOPICS}</dd>
+		<dt>{L_POSTS}</dt>
+		<dd>{POSTS}</dd>
+	</dl>
+</fieldset>
+<!-- ELSE IF S_CHECK_UCOZ_DUMP -->
+	<!-- IF S_ERROR --><p class="error">{S_ERROR}</p>
+	<!-- ELSE -->
+	<!-- IF S_RESUME -->
+	<p class="error">{L_RESUME_CONVERT}</p>
+	<!-- ENDIF -->
+	<form method="post" action="{S_ACTION}" class="headerspace">
+		<fieldset>
+			<p>{L_DUMP_CHK_SUCCESS}</p>
+			{L_HOST}{L_COLON} <input class="inputbox autowidth" name="host" type="text" size="40" maxlength="255" value=""><br />{L_HOST_EXPLAIN}<br /><br />
+			<input type="submit" name="continue" value="<!-- IF S_RESUME -->{L_NEW_CONVERT}<!-- ELSE -->{L_CONTINUE}<!-- ENDIF -->" class="button2" />
+			<!-- IF S_RESUME -->
+			&nbsp;<input type="submit" name="resume" value="{L_RESUME}" class="button2" />
+			<!-- ENDIF -->
+		</fieldset>
+	</form>
+	<!-- ENDIF -->
+<!-- ENDIF -->
+<!-- BEGIN users -->
+{users.USERNAME}<br />
+<!-- END users -->
+<!-- INCLUDE simple_footer.html -->
